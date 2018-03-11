@@ -1,0 +1,457 @@
+/**fonts and body**/
+
+
+
+html, body{font-family: Lato, sans-serif;
+   font-size: 100%;
+   background:#fff; 
+   font-family: sans-serif;
+   margin: 0;
+}
+h4, h5, h6,
+h1, h2, h3 {margin: 0;}
+
+ul, ol {margin: 0;}
+/*--parallax--*/
+.parallax {
+    
+    /*background-color: rgba(0, 0, 0, 0.03);*/
+    background-image: url(../images/State_Library_Of_Queensland_01.jpg);
+	padding-top: 1.1em;
+    
+	font-family: 'Pacifico', cursive;
+	color: white;
+	text-align: center;
+	font-size: 5em;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+
+/*--header start here--*/
+
+.top-navg {
+	padding-left: 2%;
+ 	position: fixed;
+ 	width: 100%;
+ 	height: 7%;
+ 	padding-bottom: 0.8%;
+	padding-top: 0.4%;
+	background:rgba(0, 0, 0, 9);
+	z-index:9999;
+}
+
+
+.top-navg ul.res li {
+	padding-top: 1.5%;
+ 	
+    display: inline-block;
+   
+}
+
+
+.top-navg ul.res li  a {
+	
+    font-size: 1.2em;
+    color: #fff;
+    padding: 0em 1em;
+    display: block;
+}
+.top-navg ul.res li  a:hover,ul.res li a.active{
+   color:#3cafe6;
+   transition: 0.5s all;
+}
+
+.logo{float: left;
+	padding-right: 62%;
+	
+}
+
+.top-navg nav a {
+	position: relative;
+	display: inline-block;
+	outline: none;
+	color: #fff;
+	text-decoration: none;
+	letter-spacing: 1px;
+	font-weight: 400;
+	text-shadow: 0 0 1px rgba(255,255,255,0.3);
+	font-size: 3em;
+}
+
+
+/*--banner start here--*/
+.banner {
+    background: url(../images/State_Library_Of_Queensland_01.jpg) /*no-repeat*/;
+    
+    min-height: 80em;
+    background-size: cover;
+    
+  
+}
+
+.banner-main {
+    text-align: center;
+    padding-top: 20%;
+}
+.banner-main h3 {
+    font-size: 5em;
+    color: #3cafe6;
+    font-weight: 300;
+    margin-bottom: 0.5em;
+}
+.banner-main h4 {
+     font-size: 3.5em;
+    color: #fff;
+    font-weight: 300;
+}
+.ban-btn a {
+	background-color: white;
+    font-size: 1em;
+    color: #fff;
+    background: #3cafe6;
+    padding: 0.9em 3em;
+    display: inline-block;
+    margin-top: 2em;
+    text-decoration: none;
+}
+.ban-btn a:hover{
+	background: #000;
+}
+.banner-main1 {
+	
+    text-align: center;
+    padding-top: 10em;
+    
+}
+.banner-main4 {
+	
+    text-align: center;
+    
+    
+}
+	
+/*map and filter*/
+.div-a{ float:left;
+	width:49%;
+	padding-left: 5em;} 
+	
+.div-b{ float:left;
+	width:40%;
+	font-family: lato;
+	font-size: 1.5em; } 
+	
+.title1{font-family: 'raleway', cursive;
+	font-size: 1.6em;
+	padding-bottom: 2em;
+}
+
+.title2{font-family: Lato;
+	font-size: 1.2em;
+	font-weight: 900;
+	
+}
+
+
+
+.filter{font-family: Lato;
+	font-size: 1em;
+	font-weight: 500;
+	
+   
+    
+}
+.Onandoff{width: 3.5em;
+	float: left;
+	padding-left: 6em;
+}
+.wifi{float: left;
+	padding-left: 5em;
+}
+.saturday{float: left;
+	padding-left: 5.3em;
+	
+}
+.sunday{float: left;
+	padding-left: 6em;
+}
+.indigenous{float: left;
+	padding-left: 7em;}
+.banner-main2{ 
+	margin-top: 50em;
+	
+	font-family: Lato;
+} 
+.banner-main3{ 
+	 text-align: center;
+    padding-top: 10em;
+      color: rgba(255, 255, 255, 1);
+  background-color: #2d323c;
+	
+} 
+
+.div-c{ float:left;
+	width:50%;
+	padding-left: 7.5em;} 
+.div-d{ float:left;
+	width:20%;
+	font-size: 1em;
+	 } 
+.div-d h3{ font-size: 2em;
+	font-style: italic ; 
+	color: #808080;
+	font-weight: 400} 
+.div-d h4{ font-size: 1.2em;
+	font-style:normal; 
+	font-weight: 300 } 
+ul li
+{
+list-style-type:none;
+}
+
+/*animate*/
+.animated {
+ 
+  animation-duration: 3s;
+ 
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+
+  animation-iteration-count: infinite;
+}
+
+.animated.hinge {
+ 
+  animation-duration: 3s;
+}
+
+
+@keyframes bounceInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(2000px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateX(-30px);
+  }
+
+  80% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.bounceInRight {
+  animation-name: bounceInRight;
+}
+
+/*-contact-*/
+
+.contactsheet{
+		 text-align: center;
+    padding-top: 10em;
+      color: black;
+      font-family: lato;
+	font-size: 1.6em;
+
+}
+
+#form {
+  position: relative;
+  width: 500px;
+  margin: 50px auto 100px auto;
+}
+
+input {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875em;
+  width: 470px;
+  height: 50px;
+  padding: 0px 15px 0px 15px;
+  
+  background: transparent;
+  outline: none;
+  color: #726659;
+  
+  border: solid 1px #b3aca7;
+  border-bottom: none;
+  
+
+}
+
+input:hover {
+  background:#c3c1c1;
+  color: #e2dedb;
+}
+
+textarea {
+  width: 470px;
+  max-width: 470px;
+  height: 110px;
+  max-height: 110px;
+  padding: 15px;
+  
+  background: transparent;
+  outline: none;
+  
+  color: #726659;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875em;
+  
+  border: solid 1px #b3aca7;
+  }
+
+
+textarea:hover {
+  background:#c3c1c1;
+  color: #e2dedb;
+}
+
+#submit {
+  width: 502px;
+  
+  padding: 0;
+  margin: -5px 0px 0px 0px;
+  
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875em;
+  color: #b3aca7;
+  
+  outline:none;
+  cursor: pointer;
+  
+  border: solid 1px #b3aca7;
+  border-top: none;
+}
+
+#submit:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/*--*/
+
+
+.bottom {
+  opacity: 1;
+  font-size: 16px;
+  color: white;
+  display: block;
+  margin-top: 21%;
+  
+}
+
+
+/*-button-*/
+.button {  
+    position: relative;  
+    float: left;   
+     width: 20px; 
+    margin: 20px;    
+}  
+  
+.checkbox {  
+    display: none;  
+}  
+  
+.label {  
+    display: block;   
+    overflow: hidden;   
+    cursor: pointer;  
+    border: 2px solid #999999;   
+    border-radius: 20px;  
+     margin-top: 0.2em;
+}  
+  
+.inner {  
+    display: block;   
+    width: 200%;   
+    margin-left: -100%;  
+    transition: margin 0.3s ease-in 0s;  
+}  
+  
+.inner::before, .inner::after {  
+    display: block;   
+    float: right;   
+    width: 50%;   
+    height: 30px;   
+    padding: 0;   
+    line-height: 30px;  
+    font-size: 14px;   
+    color: white;   
+    font-family:   
+    lato;   
+    font-weight: bold;  
+    box-sizing: border-box;  
+}  
+  
+.inner::after {  
+    content: attr(data-on);  
+    padding-left: 44px;  
+    background-color: #25b1fc;   
+    color: #2c3e50;  
+}  
+  
+.inner::before {  
+    content: attr(data-off);  
+    padding-right: 44px;  
+    background-color: #EEEEEE;   
+    color: #2c3e50;  
+    text-align: right;  
+}  
+  
+
+  
+.checkbox:checked + .label .inner {  
+    margin-left: 0;  
+}  
+  
+.checkbox:checked + .label .switch {  
+    right: 0px;   
+} 
+
+#cardsort{padding-top: 50em;}
+
+.records {
+	
+      padding: 1em;
+      margin-top: 1em;
+  font-family: Lato, sans-serif;
+  background-color: #44bbff;
+  color: white;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  margin: 50px;
+
+} 
+
+.div-b{
+  /*border: solid;*/
+  box-sizing: border-box;
+  padding-bottom: 75px;
+}
+
+#wifi{
+  /*border: solid;*/
+  padding: 0px 10px 0px 10px;
+}
+
+#filter-text{
+  border: solid;
+  padding: 5px;
+  margin-top: 100px;
+}

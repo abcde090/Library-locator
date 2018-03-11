@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+   <head>
+      <title>Skeleton</title>
+      <style>
+         .record {
+				border: 2px solid orange;
+				padding: 1em;
+				margin-top: 1em;
+			}
+         
+		 #map {
+         height: 400px;
+         width: 50%;
+         }
+      </style>
+      <script src="jquery-3.2.1.min.js"></script>
+      <script>
+         function iterateRecords(data) {
+         
+         	console.log(data);
+         	var coords = [];
+         
+         	$.each(data.result.records, function(recordKey, recordValue) {
+         
+         		var recordBranchName = recordValue['BranchName'];
+				var recordBranchType = recordValue['BranchType'];
+				var recordNameofLibraryService = recordValue['NameofLibraryService'];
+				var recordLibraryServiceType = recordValue['LibraryServiceType'];
+				var recordWiFiAvailability = recordValue['WiFiAvailability'];
+				var recordAddressLine1 = recordValue['AddressLine1'];
+				var recordAddressLine2 = recordValue['AddressLine2'];
+				var recordAddressLocality = recordValue['AddressLocality'];
+				var recordAddressPostcode = recordValue['AddressPostcode'];
+				var recordPostalAddressLine1 = recordValue['PostalAddressLine1'];
+				var recordPostalAddressLine2 = recordValue['PostalAddressLine2'];
+				var recordPostalAddressLocality = recordValue['PostalAddressLocality'];
+				var recordPostalAddressPostCode = recordValue['PostalAddressPostcode'];
+				var recordILLAddressLine1 = recordValue['ILLAddressLine1'];
+				var recordILLAddressLine2 = recordValue['ILLAddressLine2'];
+				var recordILLAddressLine3 = recordValue['ILLAddressLine3'];
+				var recordILLAddressLine4 = recordValue['ILLAddressLine4'];
+				var recordILLAddressLocality = recordValue['ILLAddressLocality'];
+				var recordILLAddressPostcode = recordValue['ILLAddressPostcode'];
+				var recordPhone = recordValue['Phone'];
+				var recordAfterHoursPhone = recordValue['AfterHoursPhone'];
+				var recordMobilePhone = recordValue['MobilePhone'];
+         		var recordFax = recordValue['Fax'];
+				var recordEmail = recordValue['Email'];
+				var recordOpeningHoursMonday = recordValue['OpeningHoursMonday'];
+				var recordOpeningHoursTursday = recordValue['OpeningHoursTursday'];
+				var recordOpeningHoursWednesday = recordValue['OpeningHoursWednesday'];
+				var recordOpeningHoursThursday = recordValue['OpeningHoursThursday'];
+				var recordOpeningHoursFriday = recordValue['OpeningHoursFriday'];
+				var recordOpeningHoursSaturday = recordValue['OpeningHoursSaturday'];
+				var recordOpeningHoursSunday = recordValue['OpeningHoursSunday'];
+				var recordLatitude = recordValue['Latitude(Decimal)'];
+				var recordLongitude = recordValue['Longitude(Decimal)'];
+				var recordBranchManagerTitle = recordValue['BranchManagerTitle'];
+				var recordBranchManagerPersonalTitle = recordValue['BranchManagerPersonalTitle'];
+				var recordBranchManagerName = recordValue['BranchManagerName'];
+				var recordBranchManagerPhone = recordValue['BranchManagerPhone'];
+				var recordBranchManagerEmail = recordValue['BranchManagerEmail'];
+				var recordOtherStaffMemberPositionTltle = recordValue['OtherStaffMemberPositionTltle'];
+				var recordOtherStaffMemberPersonalTitle = recordValue['OtherStaffMemberPersonalTitle'];
+				var recordOtherStaffMemberName = recordValue['OtherStaffMemberName'];
+
+				var recordLocation = {lat: parseFloat(recordLatitude), lng: parseFloat(recordLongitude)};
+       			coords.push(recordLocation);
+         
+          		if(recordBranchName) {
+         
+          			$('#records').append(
+          				$('<section class="records">').append(
+          					$('<h2>').text(recordBranchName),
+							 $('<h3>').text(recordBranchType),
+							 $('<a>').attr('href', 'placeholder.png')
+							 			.attr('target', '_blank')
+							 			.append(
+							 				$('<img>').attr('src', 'placeholder.png')
+							 			),
+							 $('<p>').text('Wifi Available: ' + recordWiFiAvailability)
+							
+          				)
+          			);
+         
+          		}
+       			
+       			$('#filter-text').keyup(function() {
+
+					var value = $(this).val();
+					console.log(value);
+
+					$('.records').hide();
+					$('.records:contains("' + value + '")').show();
+
+					$('#filter-count strong').text($('.records:visible').length);
+
+				});
+
+				//$('#filter-count strong').text($('.records:visible').length);
+
+         
+         	$('#wifi-yes').click(function(){
+
+				
+				
+				
+				$('.records').hide();
+				$('.records:contains("Yes")').show();
+			});
+
+			$('#wifi-no').click(function(){
+
+				
+				$('.records').show();
+			});
+       			
+         
+         	});
+
+         	return coords;
+         }
+
+         function getData() {
+
+         	var data = {
+				resource_id: '9b58c2e0-e71f-494d-82eb-1b92e39120f4',
+				limit: 1000
+			}
+
+			$.ajax({
+				url: 'http://data.gov.au/api/action/datastore_search',
+				data: data,
+				dataType: 'jsonp',
+				cache: true,
+				success: function(data) {
+					iterateRecords(data);
+					data = JSON.stringify(data);
+					localStorage.setItem('slqData', data);
+					console.log('From API');
+
+				}
+			});
+         }
+         
+      </script>
+   </head>
+   <body>
+      <h1 align = center>Library Locator</h1>
+      <div id="map"></div>
+      <script>
+         function initMap() {
+
+         	var locations = [];
+
+         	if(localStorage.getItem('slqData')) {
+				data = localStorage.getItem('slqData');
+				data = JSON.parse(data);
+				locations= iterateRecords(data);
+				console.log('From localStorage');
+			}
+			else {
+				getData();	
+			}
+				
+			// var recordLatitude = ['Longitude(Decimal)'];
+			// var recordLongitude = ['Longitude(Decimal)'];	
+            var brisbane = {lat: -27.470125, lng: 153.021072};
+			// var libraries ={lat: parseInt(recordLatitude), lng: parseInt(recordLongitude)}
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: brisbane
+            });
+
+           for(var i=0; i < locations.length; i++) {
+           	 	var marker = new google.maps.Marker({
+             		position: locations[i],
+            		map: map
+           		});
+           }
+              
+        }
+           
+      </script>
+
+      <form id="filter">
+			<input id="filter-text" name="text" type="text" placeholder="Filter by text" value="">
+			<em>(Case-sensitive)</em>
+			<p id="filter-count"><strong>0</strong> records displayed.</p>
+	  </form>
+
+	  <form id="wifi">
+			<input id="wifi-yes" name="wifi" type="radio" value="Yes"/>
+			<input id="wifi-no" name="wifi" type="radio" value="No"/>
+		</form>
+
+      <script async defer
+         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcgI8gdZn8G6yv7jryTv45XlufgrtmH74&callback=initMap"></script>
+      <section id="records"></section>
+   </body>
+</html>
